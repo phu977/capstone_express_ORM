@@ -16,7 +16,7 @@ const login = async (req, res) => {
     let password = mat_khau;
 
     if (data) {
-      let checkPassWord = bcrypt.compareSync(mat_khau, data.mat_khau);
+      let checkPassWord = bcrypt.compareSync(password, data.mat_khau);
 
       if (checkPassWord) {
         let payload = {
@@ -32,7 +32,7 @@ const login = async (req, res) => {
         });
       }
     } else {
-      res.status(404).send("tài khoản không hợp lệ ");
+      res.status(404).send({ status: 403, message: "This account is Invalid" });
     }
   } catch (error) {
     res.status(500).send(error);
