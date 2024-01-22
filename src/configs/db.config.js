@@ -1,14 +1,14 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config() // thư viện sẽ load value trong file .env
+dotenv.config(); // thư viện sẽ load value trong file .env
 
 const dbConfig = {
   dbHost: process.env.DB_HOST,
-  dbUser: process.env.DB_USER,
+  dbUser: process.env.DB_USERNAME,
   dbPass: process.env.DB_PASS,
   dbPort: process.env.DB_PORT,
   dbDialect: process.env.DB_DIALECT,
   dbName: process.env.DB_NAME,
-}
+};
 
-export default dbConfig
+export default dbConfig;
