@@ -11,10 +11,9 @@ const createComment = async (req, res) => {
     let user = await conn.nguoi_dung.findOne({
       where: { nguoi_dung_id },
     })
-    console.log('user:', user)
 
     if (!user) {
-      res.status(404).send({ message: 'User not found' })
+      res.status(404).send({ status: 404, message: 'User not found' })
       return
     }
 
@@ -24,7 +23,7 @@ const createComment = async (req, res) => {
     })
 
     if (!image) {
-      res.status(404).send({ message: 'Image not found' })
+      res.status(404).send({ status: 404, message: 'Image not found' })
       return
     }
 
@@ -36,7 +35,9 @@ const createComment = async (req, res) => {
       noi_dung,
     }
     await conn.binh_luan.create(commentData)
-    res.status(200).send({ message: 'Create comment successfully' })
+    res
+      .status(200)
+      .send({ status: 200, message: 'Create comment successfully' })
   } catch (error) {
     res.status(500).send('error: ' + error)
   }

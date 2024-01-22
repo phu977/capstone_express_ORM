@@ -33,9 +33,9 @@ VALUES
 create table binh_luan(
 	binh_luan_id int primary key auto_increment,
 	nguoi_dung_id int,
-    hinh_id int,	
+	hinh_id int,	
 	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id),
-	FOREIGN KEY (hinh_id) REFERENCES hinh_anh(hinh_id),
+	FOREIGN KEY (hinh_id) REFERENCES hinh_anh(hinh_id) ON DELETE CASCADE,
 	ngay_binh_luan date,
 	noi_dung varchar(255)
 )
@@ -100,10 +100,9 @@ create table luu_anh(
 	nguoi_dung_id int,
 	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(nguoi_dung_id),
 	hinh_id int,
-	FOREIGN KEY (hinh_id) REFERENCES hinh_anh(hinh_id),
+	FOREIGN KEY (hinh_id) REFERENCES hinh_anh(hinh_id) ON DELETE CASCADE,
 	ngay_luu date
 )
-
 
 INSERT INTO luu_anh (nguoi_dung_id, hinh_id, ngay_luu)
 VALUES
