@@ -5,7 +5,11 @@ const conn = initModels(sequelize)
 
 const getUser = async (req, res) => {
   try {
-    let data = await conn.nguoi_dung.findAll()
+    let data = await conn.nguoi_dung.findAll({
+      attributes: {
+        exclude: ['mat_khau'],
+      },
+    })
     res.status(200).send(data)
   } catch (error) {
     res.status(500).send(error)
