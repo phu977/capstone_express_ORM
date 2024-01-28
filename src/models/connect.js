@@ -10,3 +10,4 @@ const sequelize = new Sequelize(dbName, dbUser, dbPass, {
 });
 
 export default sequelize;
+//npx sequelize-auto -h localhost -d capstone_pinterest -u root -x 1234 -p 3307 --dialect mysql -o src/models
