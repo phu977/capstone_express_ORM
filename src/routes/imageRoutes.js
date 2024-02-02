@@ -1,4 +1,4 @@
-import express from "express";
+import express from 'express'
 import {
   getImageSaveByUser,
   getImageCreateByUser,
@@ -8,32 +8,36 @@ import {
   getInfoImageUser,
   createImage,
   getinfoImageSaveImageID,
-} from "../controllers/imageController.js";
-import uploadCloud from "../configs/cloudinary.config.js";
-import { khoaAPI } from "../configs/jwt.js";
+} from '../controllers/imageController.js'
+import uploadCloud from '../configs/cloudinary.config.js'
+import { khoaAPI } from '../configs/jwt.js'
 
-const imageRoutes = express.Router();
+const imageRoutes = express.Router()
 
-imageRoutes.get("/get-list-image", getListImage);
-imageRoutes.get("/search-image/:name", searchImage);
-imageRoutes.get("/info-image-user/:imageID", getInfoImageUser);
-imageRoutes.get("/info_image_save_imageID/:imageID", getinfoImageSaveImageID);
+imageRoutes.get('/get-list-image', getListImage)
+imageRoutes.get('/search-image/:name', searchImage)
+imageRoutes.get('/info-image-user/:imageID', getInfoImageUser)
 imageRoutes.get(
-  "/get-list-image-save-by-user/:userID",
+  '/info_image_save_imageID/:imageID',
   khoaAPI,
-  getImageSaveByUser
-);
+  getinfoImageSaveImageID,
+)
 imageRoutes.get(
-  "/get-list-image-create-by-user/:userID",
+  '/get-list-image-save-by-user/:userID',
   khoaAPI,
-  getImageCreateByUser
-);
-imageRoutes.delete("/delete-image/:imageID", khoaAPI, deleteImage);
+  getImageSaveByUser,
+)
+imageRoutes.get(
+  '/get-list-image-create-by-user/:userID',
+  khoaAPI,
+  getImageCreateByUser,
+)
+imageRoutes.delete('/delete-image/:imageID', khoaAPI, deleteImage)
 imageRoutes.post(
-  "/create-image",
+  '/create-image',
   khoaAPI,
-  uploadCloud.single("file"),
-  createImage
-);
+  uploadCloud.single('file'),
+  createImage,
+)
 
-export default imageRoutes;
+export default imageRoutes
